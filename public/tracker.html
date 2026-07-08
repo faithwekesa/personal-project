@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker Dashboard</title>
+    <link rel="stylesheet" href="tracker.css">
+</head>
+<body>
+
+    <main class="main-container">
+
+        <aside class="app-sidebar">
+            <div class="app-brand">
+                <h2>Habit Tracker</h2>
+                <p>One step at a time.</p>
+            </div>
+            <nav class="app-nav">
+                <button class="nav-btn active" data-page="page-timeline">🕒 My Day Timeline</button>
+                <button class="nav-btn" data-page="page-nutrition">🍳 Fuel & Hydration</button>
+                <button class="nav-btn" data-page="page-schedule">📅 Uni Schedule</button>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="global-reset-btn">Reset Day</button>
+            </div>
+        </aside>
+
+        <section class="viewport-content">
+
+            <div id="page-timeline" class="tracker-page visible">
+                <div class="page-header-row">
+                    <nav class="day-tabs">
+                        <button class="tab-button active">Mon</button>
+                        <button class="tab-button">Tue</button>
+                        <button class="tab-button">Wed</button>
+                        <button class="tab-button">Thu</button>
+                        <button class="tab-button">Fri</button>
+                        <button class="tab-button weekend">✨ Weekend Plan</button>
+                    </nav>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="section-title">Morning Personal Hours</div>
+                    <div class="time-row study-block">
+                        <div class="row-info"><span class="time-text">05:00 AM - 06:00 AM</span><span class="tag">Focus Hour</span></div>
+                        <input type="text" class="routine-input" placeholder="Plan your study target...">
+                        <button class="status-btn incomplete">Incomplete</button>
+                    </div>
+                    <div class="time-row study-block">
+                        <div class="row-info"><span class="time-text">06:00 AM - 07:00 AM</span><span class="tag">Focus Hour</span></div>
+                        <input type="text" class="routine-input" placeholder="Plan your study target...">
+                        <button class="status-btn incomplete">Incomplete</button>
+                    </div>
+                    <div class="time-row study-block">
+                        <div class="row-info"><span class="time-text">07:00 AM - 08:00 AM</span><span class="tag">Focus Hour</span></div>
+                        <input type="text" class="routine-input" placeholder="Plan your study target...">
+                        <button class="status-btn incomplete">Incomplete</button>
+                    </div>
+                    <div class="time-row study-block">
+                        <div class="row-info"><span class="time-text">08:00 AM - 09:00 AM</span><span class="tag">Focus Hour</span></div>
+                        <input type="text" class="routine-input" placeholder="Plan your study target...">
+                        <button class="status-btn incomplete">Incomplete</button>
+                    </div>
+
+                    <div class="section-title">University Classes Window</div>
+                    <div class="time-row class-block standard-window">
+                        <div class="row-info"><span class="time-text">09:00 AM - 08:00 PM</span><span class="tag">Class Hours</span></div>
+                        <p class="window-text">Standard Class Schedule Window</p>
+                    </div>
+
+                    <div class="section-title">Evening Personal Hours</div>
+                    <div class="time-row study-block">
+                        <div class="row-info"><span class="time-text">08:00 PM - 09:00 PM</span><span class="tag">Focus Hour</span></div>
+                        <input type="text" class="routine-input" placeholder="Plan your study target...">
+                        <button class="status-btn incomplete">Incomplete</button>
+                    </div>
+                    <div class="time-row study-block">
+                        <div class="row-info"><span class="time-text">09:00 PM - 10:00 PM</span><span class="tag">Focus Hour</span></div>
+                        <input type="text" class="routine-input" placeholder="Plan your study target...">
+                        <button class="status-btn incomplete">Incomplete</button>
+                    </div>
+                    <div class="time-row study-block">
+                        <div class="row-info"><span class="time-text">10:00 PM - 11:00 PM</span><span class="tag">Focus Hour</span></div>
+                        <input type="text" class="routine-input" placeholder="Plan your study target...">
+                        <button class="status-btn incomplete">Incomplete</button>
+                    </div>
+
+                    <div class="section-title">🛌 Night Recovery</div>
+                    <div class="time-row sleep-block standard-window">
+                        <div class="row-info"><span class="time-text">11:00 PM - 05:00 AM</span><span class="tag">Rest & Sleep</span></div>
+                        <div class="sleep-action-group">
+                            <button id="summary-trigger-btn">Review Day Summary</button>
+                            <p class="window-text">Rest Window</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page-nutrition" class="tracker-page">
+                <div class="nutrition-split-layout">
+                    <div class="content-box">
+                        <h2>Meals & Nutrition Goals</h2>
+                        <div class="meal-progress-bg"><div id="meal-progress-bar"></div></div>
+                        <ul class="meal-list">
+                            <li><label><input type="checkbox" class="meal-check"> <input type="text" class="meal-target-input" placeholder="Meal 1 target..."></label></li>
+                            <li><label><input type="checkbox" class="meal-check"> <input type="text" class="meal-target-input" placeholder="Meal 2 target..."></label></li>
+                            <li><label><input type="checkbox" class="meal-check"> <input type="text" class="meal-target-input" placeholder="Meal 3 target..."></label></li>
+                            <li><label><input type="checkbox" class="meal-check"> <input type="text" class="meal-target-input" placeholder="Meal 4 target..."></label></li>
+                        </ul>
+                    </div>
+
+                    <div class="content-box">
+                        <h2>Water Intake Target</h2>
+                        <div class="water-text">
+                            <span id="water-amount">0.0</span> / <input type="number" id="water-goal" value="4.0" step="0.5"> Liters
+                        </div>
+                        <div class="water-buttons">
+                            <button class="water-add-btn" id="add-500ml">+ 500ml</button>
+                            <button class="water-add-btn" id="add-1liter">+ 1 Liter</button>
+                            <button class="water-add-btn" id="reset-water">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page-schedule" class="tracker-page">
+                <div class="schedule-split-layout">
+                    <div class="content-box">
+                        <h2>Class Schedule Layout</h2>
+                        <div class="upload-box">
+                            <input type="file" id="schedule-upload" accept="image/*">
+                        </div>
+                        <div id="schedule-preview-zone">
+                            <p class="info-text" id="preview-placeholder">No timetable uploaded yet.</p>
+                            <img id="timetable-img-preview" src="" alt="Timetable Preview" style="display: none; width: 100%; max-height: 400px; object-fit: contain; margin-top: 15px; border-radius: 8px; border: 1px solid #ddd;">
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <h2>Extra Tasks Diary</h2>
+                        <p class="info-text">Quickly list unexpected work or notes here.</p>
+                        <div class="task-input-row">
+                            <input type="text" id="extra-task-input" placeholder="Type a new task...">
+                            <button id="add-task-btn">Add</button>
+                        </div>
+                        <ul id="extra-tasks-list"></ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <div class="buddy-card">
+        <div class="buddy-avatar">
+            <span id="assistant-emoji">🦉</span>
+            <span id="assistant-status" class="status-badge">Ready</span>
+        </div>
+        <div class="buddy-text">
+            <div class="buddy-header-row">
+                <strong>Buddy</strong>
+                <span id="total-percentage-badge">Day Progress: 0%</span>
+            </div>
+            <p id="assistant-bubble">"Hey! Ready to get some stuff done today?"</p>
+        </div>
+    </div>
+
+    <div id="summary-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>📋 End of Day Summary Report</h2>
+                <button id="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <ul id="summary-results-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="tracker.js"></script>
+</body>
+</html>

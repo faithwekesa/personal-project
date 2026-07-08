@@ -1,0 +1,562 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #eef2f7 0%, #dbeafe 100%);
+    background-attachment: fixed;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 85vh;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+}
+
+.app-sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.app-brand h2 {
+    font-size: 22px;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.app-brand p {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.app-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 40px;
+    flex: 1;
+}
+
+.nav-btn {
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    color: #475569;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.nav-btn.active {
+    background-color: #3b82f6;
+    color: white;
+}
+
+#global-reset-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffe4e6;
+    color: #9f1239;
+    border: 1px solid #fecdd3;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+#global-reset-btn:active {
+    background-color: #be123c;
+    color: white;
+}
+
+.viewport-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background-color: #f8fafc;
+}
+
+.tracker-page {
+    display: none;
+    width: 100%;
+}
+
+.tracker-page.visible {
+    display: block;
+}
+
+#page-timeline {
+    max-width: 680px;
+    margin: 0;
+    width: 100%;
+}
+
+#page-nutrition, #page-schedule {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+#page-nutrition.visible, #page-schedule.visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nutrition-split-layout, .schedule-split-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: -20px;
+}
+
+.nutrition-split-layout .content-box, .schedule-split-layout .content-box {
+    width: 100%;
+}
+
+.content-box {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+}
+
+.content-box h2 {
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #1e293b;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-text {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.upload-box input[type="file"] {
+    padding: 8px;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.task-input-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.task-input-row input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+.task-input-row button {
+    padding: 8px 16px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#extra-tasks-list {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.day-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 8px 14px;
+    background-color: #e2e8f0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: #475569;
+}
+
+.tab-button.active {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.tab-button.weekend {
+    background-color: #ff9800;
+    color: white;
+}
+
+.timeline-container {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.section-title {
+    font-weight: bold;
+    font-size: 13px;
+    color: #64748b;
+    margin: 24px 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.section-title:first-child {
+    margin-top: 0;
+}
+
+.time-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #e2e8f0;
+    border-left: 5px solid #cbd5e1;
+}
+
+.study-block { border-left-color: #3b82f6; }
+.class-block { border-left-color: #10b981; }
+.sleep-block { border-left-color: #9c27b0; }
+
+.row-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+}
+
+.time-text {
+    font-size: 13px;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.tag {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.routine-input {
+    flex: 1;
+    margin: 0 15px;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.window-text {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.status-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 90px;
+}
+
+.status-btn.incomplete {
+    background-color: #fef3c7; 
+    color: #92400e; 
+    border: 1px solid #fde68a;
+}
+
+.sleep-action-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#summary-trigger-btn {
+    padding: 6px 12px;
+    background-color: #d1fae5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#summary-trigger-btn:hover {
+    background-color: #a7f3d0;
+}
+
+.meal-progress-bg {
+    background-color: #f1f5f9;
+    height: 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+#meal-progress-bar {
+    background-color: #10b981;
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.meal-list {
+    list-style: none;
+}
+
+.meal-list li {
+    margin-bottom: 12px;
+}
+
+.meal-list input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.meal-target-input {
+    border: none;
+    border-bottom: 1px dashed #cbd5e1;
+    outline: none;
+    padding: 2px 5px;
+    font-size: 13px;
+    width: 80%;
+    background: transparent;
+}
+
+.water-text {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #1e293b;
+}
+
+#water-goal {
+    width: 55px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-bottom: 2px dashed #3b82f6;
+    outline: none;
+    text-align: center;
+    background: transparent;
+}
+
+.water-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.water-add-btn {
+    flex: 1;
+    padding: 8px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#reset-water {
+    background-color: #fecdd3;
+    color: #9f1239;
+    border: 1px solid #fda4af;
+}
+
+#reset-water:active {
+    background-color: #be123c;
+    color: white;
+}
+
+.buddy-card {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 10px 25 rgba(0, 0, 0, 0.05);
+}
+
+.buddy-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+#assistant-emoji {
+    font-size: 24px;
+}
+
+.status-badge {
+    background-color: #10b981;
+    color: white;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.buddy-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 260px;
+}
+
+#total-percentage-badge {
+    background-color: #3b82f6;
+    color: white;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+#assistant-bubble {
+    font-size: 13px;
+    color: #475569;
+    margin-top: 4px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-box {
+    background-color: white;
+    padding: 24px;
+    border-radius: 12px;
+    width: 450px;
+    max-width: 90%;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-header h2 {
+    font-size: 18px;
+}
+
+#close-modal-btn {
+    background: none; border: none; font-size: 24px; cursor: pointer; color: #aaa;
+}
+
+#summary-results-list li {
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px dashed #f0f0f0;
+}
+
+#page-nutrition .content-box, #page-schedule .content-box {
+    padding: 32px;
+}
+
+#page-nutrition h2, #page-schedule h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+#page-nutrition .meal-list li {
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+#page-nutrition .meal-check {
+    width: 18px;
+    height: 18px;
+}
+
+#page-nutrition .meal-target-input {
+    font-size: 15px;
+}
+
+#page-nutrition .water-text {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+#page-nutrition #water-goal {
+    font-size: 24px;
+}
+
+#page-nutrition .water-add-btn {
+    padding: 12px;
+    font-size: 14px;
+}
